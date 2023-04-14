@@ -128,7 +128,7 @@ class Hobbit
       end
   end
   
-  p hobbit1
+
   hobbit1 = Hobbit.new("Frodo", "Happy")
   # Absulutely did not figure this out on my own.
   33.times do
