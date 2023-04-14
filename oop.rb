@@ -89,41 +89,44 @@ p dragon1
 #  it should have a has_ring attribute. If the Hobbit's name is "Frodo", true, if not, false.
 
 
-# To be totally honest, I workd on this after study hall until around 8pm.  I will try to tweak this in the morning, however I ran out of time this evening.
-# Everyting work, however I am still figuring out how to increase the age by 1, 101 times without having to call the celebrate_birthday method 101 times.
-# In addition, when I manually set the age to 101, it does change to old = true, but then adult goes back to false.  I just feel like I'm missing something.
-# I'm going to submit it and revisit this.
+# I revised this after I submitted it.  Help from a peer who stayed late at study hall, which I had to leave early :(.
 class Hobbit
-    def initialize(name, dispo)
+    def initialize(name, dispo, age = 0)
         @name = name
         @dispo = dispo
-        @age = 0
+        @age = age
         @is_adult = false
         @is_old = false
-        @has_ring = false
+        @has_ring = is_frodo
     end
 
     def celebrate_birthday
         @age += 1
-        if @age >= 33 && @age < 101
-            @is_adult = true
-        elsif @age >= 101
-            @is_old = true
+        if  @age == 33 
+          @is_adult = true
         end
-    end
-
-    def correct_name
-        if @name == "Frodo"
-            @has_ring = true
+        if @age == 101
+          @is_old = true
         end
-    end
-end
-
-hobbit1 = Hobbit.new("Bilbo", "grumpy")
-hobbit1.celebrate_birthday
-hobbit1.correct_name
-p hobbit1
-hobbit2 = Hobbit.new("Frodo", "heartfelt")
-hobbit2.celebrate_birthday
-hobbit2.correct_name
-p hobbit2
+      end
+      def is_frodo
+          if @name == "Frodo"
+              @has_ring = true
+          end
+      end
+  end
+  
+  p hobbit1
+  hobbit1 = Hobbit.new("Frodo", "Happy")
+  # Absulutely did not figure this out on my own.
+  33.times do
+      hobbit1.celebrate_birthday
+  end
+  
+  p hobbit1
+  #Ah ha!  This is how you do it without writing 100 lines!
+  101.times do
+    hobbit1.celebrate_birthday
+  end
+  
+  p hobbit1
