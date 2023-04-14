@@ -5,15 +5,25 @@
 
 # I wasn't sure how to make the "say" method.  I thought it was an instance method but couldn't figure out how to get that to work in this example without being redundant. 
 class Unicorn
-    def initialize(name, say)
+    attr_reader :name, :color, :say
+    def initialize(name, color = "silver", say)
         @name = name
-        @color = "silver"
+        @color = color
         @say = say
+    end
+
+    def say(statement)
+        "*~* #{statement} *~*"
     end
 end
 
-unicorn1 = Unicorn.new("Hazel", "*~* the unicorn can be found at Hogsmeade Square *~*")    
+unicorn1 = Unicorn.new("Neon", "purple")
 p unicorn1
+p unicorn1.say("when I grow up, I want my own bed")
+
+unicorn2 = Unicorn.new("Bastion", "grey")
+p unicorn2
+p unicorn2.say("people say I'm strange, does that make me a stranger?")
 
 #  Write a class called Vampire
 #  it should have a dynamic name attribute
@@ -25,9 +35,9 @@ p unicorn1
 class Vampire
     attr_reader :name, :pet, :thirsty 
 
-    def initialize(name)
+    def initialize(name, pet = "bat")
         @name = name
-        @pet = "bat"
+        @pet = pet
         @thirsty = true
     end
 
@@ -36,7 +46,7 @@ class Vampire
     end
 end
 
-vampire1 = Vampire.new("Dracula")
+vampire1 = Vampire.new("Dracula", "crow")
 p vampire1
 vampire1.drink
 p vampire1
@@ -52,6 +62,7 @@ p vampire1
 # I spent a lot of time on this one and got help from a peer.  I was trying to do it without addint the food attribute.
 # I also went to a study hall and got clarification here.
 class Dragon
+    attr_reader :name, :rider, :color, :is_hungry, :times_eaten
     def initialize(name, rider, color)
         @name = name
         @rider = rider
@@ -91,6 +102,7 @@ p dragon1
 
 # I revised this after I submitted it.  Help from a peer who stayed late at study hall, which I had to leave early :(.
 class Hobbit
+    attr_reader :name, :dispo, :age, :is_adult, :is_old, :has_ring
     def initialize(name, dispo, age = 0)
         @name = name
         @dispo = dispo
